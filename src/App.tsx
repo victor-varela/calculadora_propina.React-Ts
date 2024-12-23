@@ -1,4 +1,8 @@
+import { menuItem } from "./data/data";
+
 function App() {
+  console.log(menuItem);
+
   return (
     <>
       <header className="bg-teal-400 py-5">
