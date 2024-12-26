@@ -1,14 +1,18 @@
 import type { MenuItem } from "../types";
 
+
 type MenuItemProps = {
   item: MenuItem;
+  addItem : ()=> void
 };
 
-const MenuItem = ({ item }: MenuItemProps) => {
-  console.log(item);
-
+const MenuItem = ({ item, addItem }: MenuItemProps) => {
+ 
   return (
-    <button className="w-full flex justify-between p-3 hover:bg-teal-200 border-2 border-teal-400">
+    <button
+      className="w-full flex justify-between p-3 hover:bg-teal-200 border-2 border-teal-400"
+      onClick={()=> addItem()}
+    >
       <p>{item.name}</p>
       <p className="font-black">${item.price}</p>
     </button>
