@@ -1,10 +1,10 @@
 import { useState } from "react";
-import type { OrderItem } from "../types";
+import type { MenuItem, OrderItem } from "../types";
 
 export const useOrder = ()=> {
   const [order, setOrder] = useState<OrderItem[]>([]);
-  const addItem = () => {
-    console.log("agregando...");
+  const addItem = (item: MenuItem) => {
+    console.log("agregando...", item);
   };
 
   return {
@@ -23,6 +23,7 @@ EN ts el enemigo es el tipo ANY.. asi que order debe tener su type especifico. V
 
 <nameOfType> esto es generics.. esto define el type en useState
 
+Este hook se importa en App.tsx porque es un estado GLOBAL.
 
 
 */
