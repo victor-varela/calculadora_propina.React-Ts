@@ -4,8 +4,13 @@ import type { MenuItem, OrderItem } from "../types";
 export const useOrder = ()=> {
   const [order, setOrder] = useState<OrderItem[]>([]);
   const addItem = (item: MenuItem) => {
-    console.log("agregando...", item);
+
+    const newItem = {...item, quantity:1}
+    setOrder([...order, newItem])
+    console.log(order);
   };
+
+  
 
   return {
     addItem,
@@ -24,6 +29,8 @@ EN ts el enemigo es el tipo ANY.. asi que order debe tener su type especifico. V
 <nameOfType> esto es generics.. esto define el type en useState
 
 Este hook se importa en App.tsx porque es un estado GLOBAL.
+
+Cuando agregamos nuevo producto a setOrder, creamos una nueva variable {objeto} que tiene lo mismo que el item que recibe la funcion y le agregamos la cantidad. Asi va a COINCIDIR el type con orderItem type
 
 
 */
