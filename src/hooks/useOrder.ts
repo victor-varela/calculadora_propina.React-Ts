@@ -1,21 +1,26 @@
 import { useState } from "react";
 import type { MenuItem, OrderItem } from "../types";
 
-export const useOrder = ()=> {
+export const useOrder = () => {
   const [order, setOrder] = useState<OrderItem[]>([]);
   const addItem = (item: MenuItem) => {
-
-    const newItem = {...item, quantity:1}
-    setOrder([...order, newItem])
-    console.log(order);
+    const itemExists = order.find(order => order.id === item.id);
+    if (itemExists) {
+      console.log("ya existe..");
+      const updatedOrder = order.map(order => order.id === item.id ? {...order, quantity:order.quantity+1} : order)
+      setOrder(updatedOrder)
+      
+    } else {
+      const newItem = { ...item, quantity: 1 };
+      setOrder([...order, newItem]);
+    }
   };
-
-  
+  console.log(order);
 
   return {
     addItem,
   };
-}
+};
 
 /*Este es el hook que se encarga de la logica para agregar un item. Solo es codigo de logica, no hay template. Por ello este archivo es .ts ¿cuando creamos un hook? cuando vamos a hacer la logica de nuestra app agregar un producto al carrito, pagar un articulo, etc..
 Es un custom Hook por eso siempre empieza con use. useOrder
