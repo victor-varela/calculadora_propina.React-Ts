@@ -6,19 +6,19 @@ export const useOrder = () => {
   const addItem = (item: MenuItem) => {
     const itemExists = order.find(order => order.id === item.id);
     if (itemExists) {
-      console.log("ya existe..");
-      const updatedOrder = order.map(order => order.id === item.id ? {...order, quantity:order.quantity+1} : order)
-      setOrder(updatedOrder)
-      
+      const updatedOrder = order.map(order =>
+        order.id === item.id ? { ...order, quantity: (order.quantity += 1) } : order
+      );
+      setOrder(updatedOrder);
     } else {
       const newItem = { ...item, quantity: 1 };
       setOrder([...order, newItem]);
     }
   };
-  console.log(order);
 
   return {
     addItem,
+    order,
   };
 };
 
