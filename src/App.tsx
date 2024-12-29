@@ -24,7 +24,7 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="border border-dashed">
+        <div className="border border-dashed p-5 rounded-lg space-y-10 border-slate-300">
           <OrderContents
             order={order}
           />
