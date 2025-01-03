@@ -1,13 +1,14 @@
 //Se llama OrderContents pero puede ser tambien OrderContainer.tsx
 
-import { OrderItem } from "../types";
+import { MenuItem, OrderItem } from "../types";
 import { formatCurrency } from "../utils";
 
 type OrderContentsProps = {
   order: OrderItem[];
+  removeItem: (id: MenuItem['id'])=> void;
 };
 
-const OrderContents = ({ order }: OrderContentsProps) => {
+const OrderContents = ({ order, removeItem }: OrderContentsProps) => {
   return (
     <div>
       <h2 className="font-black text-4xl">Consumo</h2>
@@ -28,7 +29,11 @@ const OrderContents = ({ order }: OrderContentsProps) => {
                   Cantidad: {order.quantity} - {formatCurrency(order.price * order.quantity)}
                 </p>
               </div>
-              <button className="h-8 w-8 rounded-full bg-red-600 text-white font-black">X</button>
+              <button 
+              className="h-8 w-8 rounded-full bg-red-600 text-white font-black"
+              onClick={()=>removeItem(order.id)
+              }
+              >X</button>
             </div>
           ))
         )}

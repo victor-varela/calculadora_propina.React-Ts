@@ -16,9 +16,14 @@ export const useOrder = () => {
     }
   };
 
+  const removeItem = (id: MenuItem["id"]) => {
+    setOrder(order.filter(order => order.id !== id));
+  };
+
   return {
     addItem,
     order,
+    removeItem,
   };
 };
 
@@ -37,5 +42,7 @@ Este hook se importa en App.tsx porque es un estado GLOBAL.
 
 Cuando agregamos nuevo producto a setOrder, creamos una nueva variable {objeto} que tiene lo mismo que el item que recibe la funcion y le agregamos la cantidad. Asi va a COINCIDIR el type con orderItem type
 
+en la funcion removeItem, nos valemos del lookup del type MenuItem. Por eso declaramos id: MenuItem['id']. La sintaxis es
+ nombreDelType.['propiedadQueBuscamos'] 
 
 */
