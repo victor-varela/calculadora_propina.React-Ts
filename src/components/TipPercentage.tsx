@@ -16,7 +16,12 @@ const tipOptions = [
   },
 ];
 
-const TipPercentage = () => {
+type TipPercentageProps = {
+    setTip:React.Dispatch<React.SetStateAction<number>>
+}
+
+//el type de setTip lo tomamos de VsCode.. es de type "useState.. digamos"
+const TipPercentage = ({setTip}: TipPercentageProps) => {
   return (
     <div>
       <h2 className="font-black text-2xl">Propina:</h2>
@@ -24,7 +29,7 @@ const TipPercentage = () => {
         {tipOptions.map(option => (
           <div key={option.id} className="flex gap-2">
             <label htmlFor={option.id}>{option.label}</label>
-            <input type="radio" id={option.id} name="tip" value={option.value} />
+            <input type="radio" id={option.id} name="tip" value={option.value} onChange={ e=> setTip(+e.target.value)} />
           </div>
         ))}
       </form>
@@ -32,5 +37,5 @@ const TipPercentage = () => {
   );
 };
 
-//Vieja leccion de FORM.. los input deben tener el htmlfor=id === atributo id del input. Y name igual para todos y value DIFERENTE
+//Vieja leccion de FORM.. los input deben tener el htmlfor=id === atributo id del input. Y name igual para todos y value DIFERENTE. Los valores de un FORM se leen con e => e.target.value y por medio de onChange. Otra leccion: para que ts tome el type de value se agrega sigo + antes de e porque por default los value son strings y lo estamos declarando como number
 export default TipPercentage;
