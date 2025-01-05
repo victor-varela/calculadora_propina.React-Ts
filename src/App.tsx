@@ -1,6 +1,7 @@
 import MenuItem from "./components/MenuItem";
 import OrderContents from "./components/OrderContents";
 import OrderTotals from "./components/OrderTotals";
+import TipPercentage from "./components/TipPercentage";
 import { menuItems } from "./data/data";
 import { useOrder } from "./hooks/useOrder";
 
@@ -30,6 +31,7 @@ function App() {
             order={order}
             removeItem={removeItem}
           />
+          <TipPercentage />
           <OrderTotals
             order={order}
           />
