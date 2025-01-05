@@ -37,6 +37,7 @@ const OrderContents = ({ order, removeItem }: OrderContentsProps) => {
             </div>
           ))
         )}
+        
       </div>
     </div>
   );
