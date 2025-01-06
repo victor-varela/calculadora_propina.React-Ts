@@ -6,7 +6,7 @@ import { menuItems } from "./data/data";
 import { useOrder } from "./hooks/useOrder";
 
 function App() {
-  const { addItem, order, removeItem, tip, setTip } = useOrder();
+  const { addItem, order, removeItem, tip, setTip, resetOrder } = useOrder();
   return (
     <>
       <header className="bg-teal-400 py-5">
@@ -37,6 +37,7 @@ function App() {
           <OrderTotals
             order={order}
             tip={tip}
+            resetOrder={resetOrder}
           />
         </div>
       </main>

@@ -5,11 +5,13 @@ import { formatCurrency } from "../utils";
 type OrderTotalsProps = {
   order: OrderItem[];
   tip: number;
+  resetOrder: ()=> void
 };
 
-const OrderTotals = ({ order, tip }: OrderTotalsProps) => {
+const OrderTotals = ({ order, tip, resetOrder }: OrderTotalsProps) => {
   const subtotalAmount = useMemo(() => order.reduce((total, item) => total + item.quantity * item.price, 0), [order]);
-  const tipAmount = useMemo( ()=> subtotalAmount *tip, [tip, order] )
+  const tipAmount = useMemo(() => subtotalAmount * tip, [tip, order]);
+  const totalAmount = useMemo(() => subtotalAmount + tipAmount, [tip, order]);
   return (
     <>
       <div className="space-y-3">
@@ -21,10 +23,12 @@ const OrderTotals = ({ order, tip }: OrderTotalsProps) => {
           Propina: <span className="font-bold">{formatCurrency(tipAmount)}</span>
         </p>
         <p>
-          Total a pagar: <span className="font-bold">{formatCurrency(subtotalAmount + tipAmount)}</span>
+          Total a pagar: <span className="font-bold">{formatCurrency(totalAmount)}</span>
         </p>
       </div>
-      <button></button>
+      <button
+        onClick={()=>resetOrder()}
+      >Reiniciar</button>
     </>
   );
 };
