@@ -21,7 +21,7 @@ export const useOrder = () => {
     setOrder(order.filter(order => order.id !== id));
   };
 
-  const resetOrder = () => {
+  const placeOrder = () => {
     setOrder([]);
     setTip(0);
   };
@@ -32,7 +32,7 @@ export const useOrder = () => {
     removeItem,
     tip,
     setTip,
-    resetOrder,
+    placeOrder,
   };
 };
 

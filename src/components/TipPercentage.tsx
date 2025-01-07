@@ -17,11 +17,12 @@ const tipOptions = [
 ];
 
 type TipPercentageProps = {
-    setTip:React.Dispatch<React.SetStateAction<number>>
+    setTip:React.Dispatch<React.SetStateAction<number>>;
+    tip: number
 }
 
 //el type de setTip lo tomamos de VsCode.. es de type "useState.. digamos"
-const TipPercentage = ({setTip}: TipPercentageProps) => {
+const TipPercentage = ({setTip, tip}: TipPercentageProps) => {
   return (
     <div>
       <h2 className="font-black text-2xl">Propina:</h2>
@@ -29,7 +30,14 @@ const TipPercentage = ({setTip}: TipPercentageProps) => {
         {tipOptions.map(option => (
           <div key={option.id} className="flex gap-2">
             <label htmlFor={option.id}>{option.label}</label>
-            <input type="radio" id={option.id} name="tip" value={option.value} onChange={ e=> setTip(+e.target.value)} />
+            <input 
+              type="radio" 
+              id={option.id} 
+              name="tip" 
+              value={option.value} 
+              onChange={ e=> setTip(+e.target.value)} 
+              checked={tip=== option.value}
+            />
           </div>
         ))}
       </form>

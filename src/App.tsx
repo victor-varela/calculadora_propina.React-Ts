@@ -6,7 +6,7 @@ import { menuItems } from "./data/data";
 import { useOrder } from "./hooks/useOrder";
 
 function App() {
-  const { addItem, order, removeItem, tip, setTip, resetOrder } = useOrder();
+  const { addItem, order, removeItem, tip, setTip, placeOrder } = useOrder();
   return (
     <>
       <header className="bg-teal-400 py-5">
@@ -18,27 +18,21 @@ function App() {
           <h2 className="text-4xl font-black">Menu</h2>
           <div className="space-y-3 mt-10">
             {menuItems.map(item => (
-              <MenuItem 
-                key={item.id} 
-                item={item} 
-                addItem={addItem} 
-              />
+              <MenuItem key={item.id} item={item} addItem={addItem} />
             ))}
           </div>
         </div>
         <div className="border border-dashed p-5 rounded-lg space-y-10 border-slate-300">
-          <OrderContents
-            order={order}
-            removeItem={removeItem}
-          />
-          <TipPercentage
-            setTip={setTip}
-          />
-          <OrderTotals
-            order={order}
-            tip={tip}
-            resetOrder={resetOrder}
-          />
+          <h2 className="font-black text-4xl">Consumo</h2>
+          {order.length ? (
+            <>
+              <OrderContents order={order} removeItem={removeItem} />
+              <TipPercentage setTip={setTip} tip={tip} />
+              <OrderTotals order={order} tip={tip} placeOrder={placeOrder} />
+            </>
+          ) : (
+            <p className="text-center text-xl">la orden esta vacia</p>
+          )}
         </div>
       </main>
     </>
