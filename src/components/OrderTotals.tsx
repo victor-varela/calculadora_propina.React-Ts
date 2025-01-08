@@ -27,7 +27,7 @@ const OrderTotals = ({ order, tip, placeOrder }: OrderTotalsProps) => {
         </p>
       </div>
       <button
-        onClick={()=>placeOrder()}
+        onClick={placeOrder}
         className="w-full bg-black opacity-85 text-white p-3 uppercase mt-10 font-bold hover:opacity-100"
       >Guardar Orden
       </button>

@@ -11,6 +11,7 @@ type OrderContentsProps = {
 const OrderContents = ({ order, removeItem }: OrderContentsProps) => {
   return (
     <div>
+      <h2 className="font-black text-4xl">Consumo</h2>
       <div className="space-y-3 mt-5">
         {order.map(order => (
           <div

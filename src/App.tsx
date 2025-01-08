@@ -23,7 +23,6 @@ function App() {
           </div>
         </div>
         <div className="border border-dashed p-5 rounded-lg space-y-10 border-slate-300">
-          <h2 className="font-black text-4xl">Consumo</h2>
           {order.length ? (
             <>
               <OrderContents order={order} removeItem={removeItem} />
